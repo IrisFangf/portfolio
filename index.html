@@ -104,7 +104,7 @@
       padding: clamp(34px, 5vw, 70px) clamp(20px, 4vw, 56px) 42px;
       overflow: hidden;
       background:
-        linear-gradient(90deg, rgba(246, 246, 242, 0.98) 0%, rgba(246, 246, 242, 0.9) 35%, rgba(23, 24, 22, 0.1) 100%),
+        linear-gradient(90deg, rgba(246, 246, 242, 0.98) 0%, rgba(246, 246, 242, 0.92) 42%, rgba(233, 233, 226, 0.66) 100%),
         var(--paper);
       border-bottom: 1px solid var(--line);
     }
@@ -174,28 +174,241 @@
       line-height: 1.35;
     }
 
-    .hero-media {
+    .hero-abilities {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      margin-top: clamp(30px, 4vw, 56px);
+      border: 1px solid var(--line);
+      background: var(--line);
+    }
+
+    .ability-row {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 20px;
+      min-height: 84px;
+      padding: 18px;
+      background: rgba(246, 246, 242, 0.92);
+    }
+
+    .ability-row strong {
+      font-size: clamp(28px, 3.6vw, 52px);
+      line-height: 0.88;
+      font-weight: 400;
+      color: var(--cyan);
+    }
+
+    .ability-row span {
+      align-self: center;
+      color: var(--ink);
+      font-size: clamp(17px, 1.6vw, 24px);
+      line-height: 1.12;
+    }
+
+    .hero-media,
+    .concept-stage {
       position: relative;
       min-height: clamp(560px, 76vh, 840px);
-      background: var(--charcoal);
       overflow: hidden;
     }
 
-    .hero-media::after {
+    .hero-media {
+      background:
+        linear-gradient(rgba(21, 21, 21, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(21, 21, 21, 0.08) 1px, transparent 1px),
+        #e8e8e0;
+      background-size: 42px 42px;
+      border: 1px solid var(--line);
+    }
+
+    .hero-media::before {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(23, 24, 22, 0.28), transparent 32%, rgba(23, 24, 22, 0.58)),
-        linear-gradient(90deg, rgba(0, 168, 183, 0.42), transparent 26%);
-      mix-blend-mode: multiply;
+        radial-gradient(circle at 70% 28%, rgba(0, 168, 183, 0.14), transparent 30%),
+        linear-gradient(135deg, rgba(246, 246, 242, 0.2), rgba(23, 24, 22, 0.08));
       pointer-events: none;
     }
 
-    .hero-media > img {
-      transform: scale(1.035);
-      filter: saturate(0.82) contrast(1.08);
-      object-position: center 42%;
+    .display-rail {
+      position: absolute;
+      left: 10%;
+      right: 8%;
+      bottom: 18%;
+      height: 2px;
+      background: rgba(21, 21, 21, 0.72);
+      transform: perspective(720px) rotateX(58deg) rotateZ(-7deg);
+      transform-origin: left center;
+    }
+
+    .display-rail::before,
+    .display-rail::after {
+      content: "";
+      position: absolute;
+      top: -120px;
+      width: 2px;
+      height: 160px;
+      background: rgba(21, 21, 21, 0.26);
+    }
+
+    .display-rail::before {
+      left: 18%;
+    }
+
+    .display-rail::after {
+      right: 22%;
+    }
+
+    .display-block {
+      position: absolute;
+      border: 1px solid rgba(21, 21, 21, 0.32);
+      background: rgba(246, 246, 242, 0.62);
+      box-shadow: 22px 32px 70px rgba(21, 21, 21, 0.12);
+    }
+
+    .display-block.one {
+      left: 12%;
+      top: 30%;
+      width: 24%;
+      height: 38%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(214, 214, 204, 0.72));
+    }
+
+    .display-block.two {
+      left: 42%;
+      top: 22%;
+      width: 18%;
+      height: 48%;
+      background: linear-gradient(180deg, rgba(0, 168, 183, 0.26), rgba(246, 246, 242, 0.76));
+    }
+
+    .display-block.three {
+      right: 12%;
+      top: 34%;
+      width: 20%;
+      height: 32%;
+      background: linear-gradient(180deg, rgba(184, 164, 124, 0.34), rgba(246, 246, 242, 0.72));
+    }
+
+    .display-block::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border: 1px solid rgba(21, 21, 21, 0.18);
+    }
+
+    .material-board {
+      position: absolute;
+      left: 8%;
+      top: 8%;
+      width: min(40%, 340px);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      padding: 10px;
+      border: 1px solid rgba(21, 21, 21, 0.28);
+      background: rgba(246, 246, 242, 0.7);
+    }
+
+    .material-board span {
+      aspect-ratio: 1;
+      border: 1px solid rgba(21, 21, 21, 0.16);
+      background: #d8d5cb;
+    }
+
+    .material-board span:nth-child(2) {
+      background: var(--cyan);
+    }
+
+    .material-board span:nth-child(3) {
+      background: #242622;
+    }
+
+    .material-board span:nth-child(4) {
+      background: var(--warm);
+    }
+
+    .material-board span:nth-child(5) {
+      background: #f7f7f1;
+    }
+
+    .material-board span:nth-child(6) {
+      background:
+        linear-gradient(90deg, rgba(21, 21, 21, 0.18) 1px, transparent 1px),
+        #cbc8bd;
+      background-size: 8px 100%;
+    }
+
+    .flow-line {
+      position: absolute;
+      left: 18%;
+      top: 16%;
+      width: 66%;
+      height: 58%;
+      border: 1px solid rgba(0, 168, 183, 0.72);
+      border-left-color: transparent;
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      transform: rotate(18deg);
+    }
+
+    .flow-line::before,
+    .flow-line::after {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: var(--cyan);
+    }
+
+    .flow-line::before {
+      right: 10%;
+      top: 6%;
+    }
+
+    .flow-line::after {
+      left: 20%;
+      bottom: 8%;
+      background: var(--warm);
+    }
+
+    .system-card {
+      position: absolute;
+      right: clamp(18px, 3vw, 42px);
+      bottom: clamp(18px, 3vw, 42px);
+      width: min(44%, 360px);
+      padding: clamp(18px, 2.2vw, 28px);
+      border: 1px solid rgba(21, 21, 21, 0.38);
+      background: rgba(246, 246, 242, 0.86);
+      box-shadow: 0 26px 70px rgba(21, 21, 21, 0.14);
+    }
+
+    .system-card small {
+      display: block;
+      margin-bottom: 36px;
+      color: var(--muted);
+      font-size: 10px;
+      text-transform: uppercase;
+    }
+
+    .system-card strong {
+      display: block;
+      font-size: clamp(28px, 3.6vw, 48px);
+      line-height: 0.88;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    .concept-tag {
+      position: absolute;
+      right: 8%;
+      top: 8%;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .hero-card {
@@ -977,31 +1190,41 @@
               <h1 data-i18n="hero.title">Retail Space & VM Portfolio</h1>
               <p class="intro" data-i18n="hero.intro">Selected commercial retail projects shown through video, large-format imagery, design proposals, and final execution.</p>
             </div>
-            <div class="project-index" aria-label="Featured projects">
-              <a href="#bsh">
-                <span data-i18n="hero.bshMeta">Recent / Large-scale retail</span>
-                <strong>BSH</strong>
-              </a>
-              <a href="#nest">
-                <span data-i18n="hero.nestMeta">Early / Full-chain VM</span>
-                <strong>NEST</strong>
-              </a>
+            <div class="hero-abilities" aria-label="Core capabilities">
+              <div class="ability-row">
+                <strong>01</strong>
+                <span data-i18n="hero.ability1">VM guideline system output</span>
+              </div>
+              <div class="ability-row">
+                <strong>02</strong>
+                <span data-i18n="hero.ability2">Retail space design to landing</span>
+              </div>
+              <div class="ability-row">
+                <strong>03</strong>
+                <span data-i18n="hero.ability3">Replicable store standards and rollout</span>
+              </div>
             </div>
           </div>
           <div class="hero-media">
-            <img src="assets/bsh-store-wide-04.jpg" alt="Siemens retail space">
-            <div class="concept-layer" aria-hidden="true">
-              <div class="concept-map"></div>
-              <div class="concept-path"></div>
-              <div class="concept-chip one">Material</div>
-              <div class="concept-chip two">Flow 01</div>
-              <div class="concept-label" data-i18n="hero.concept">Concept layer / spatial strategy</div>
-            </div>
-            <div class="hero-card">
-              <img src="assets/nest-guideline-01.jpg" alt="NEST VM guideline">
-            </div>
-            <div class="hero-mark">
-              <span data-i18n="hero.mark">VM<br>Space</span>
+            <div class="concept-stage" aria-hidden="true">
+              <div class="material-board">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="flow-line"></div>
+              <div class="display-rail"></div>
+              <div class="display-block one"></div>
+              <div class="display-block two"></div>
+              <div class="display-block three"></div>
+              <div class="system-card">
+                <small data-i18n="hero.systemSmall">Guideline / Landing / Rollout</small>
+                <strong data-i18n="hero.systemTitle">VM System</strong>
+              </div>
+              <div class="concept-tag" data-i18n="hero.concept">Concept layer / spatial strategy</div>
             </div>
           </div>
         </div>
@@ -1234,15 +1457,20 @@
     const translations = {
       en: {
         "nav.scope": "Scope",
-        "hero.eyebrow": "Selected Works 2026",
-        "hero.title": "Retail Space & VM Portfolio",
-        "hero.intro": "Selected commercial retail projects shown through video, large-format imagery, design proposals, and final execution.",
+        "hero.eyebrow": "Visual Merchandising / Retail Space",
+        "hero.title": "VM System to Store Landing",
+        "hero.intro": "A portfolio structured around the ability to build VM guidelines, translate them into retail spaces, and support scalable store replication.",
+        "hero.ability1": "VM guideline system output",
+        "hero.ability2": "Retail space design to landing",
+        "hero.ability3": "Replicable store standards and rollout",
         "hero.bshMeta": "Recent / Large-scale retail",
         "hero.nestMeta": "Early / Full-chain VM",
         "hero.concept": "Concept layer / spatial strategy",
+        "hero.systemSmall": "Guideline / Landing / Rollout",
+        "hero.systemTitle": "VM System",
         "hero.mark": "VM\nSpace",
-        "hero.left": "Focus: branded retail environments",
-        "hero.right": "Scope: guideline, design proposal, site execution, final presentation",
+        "hero.left": "From visual strategy to final store state",
+        "hero.right": "Guideline output, space design, landing control, and replicable retail standards",
         "bsh.title": "Siemens JD Mall Flagship Retail Space",
         "bsh.meta1": "Large-scale store",
         "bsh.meta2": "Commercial value",
@@ -1279,15 +1507,20 @@
       },
       zh: {
         "nav.scope": "职责",
-        "hero.eyebrow": "精选作品 2026",
-        "hero.title": "零售空间与 VM 作品集",
-        "hero.intro": "用视频、大图、设计方案与落地照片展示商业零售项目。",
+        "hero.eyebrow": "Visual Merchandising / Retail Space",
+        "hero.title": "从 VM 系统到门店落地",
+        "hero.intro": "首页先呈现能力结构：输出 VM guideline，将其转化为空间与陈列方案，并支持后续门店复刻与标准化延展。",
+        "hero.ability1": "VM guideline 系统输出",
+        "hero.ability2": "零售空间设计到落地",
+        "hero.ability3": "门店标准复刻与延展",
         "hero.bshMeta": "近期 / 大体量零售空间",
         "hero.nestMeta": "早期 / 全链路 VM 工作",
         "hero.concept": "概念层 / 空间策略",
+        "hero.systemSmall": "Guideline / Landing / Rollout",
+        "hero.systemTitle": "VM System",
         "hero.mark": "VM\nSpace",
-        "hero.left": "方向：品牌零售终端空间",
-        "hero.right": "范围：guideline、设计方案、现场落地、最终效果呈现",
+        "hero.left": "从视觉策略到最终店态",
+        "hero.right": "Guideline 输出、空间设计、落地把控、可复刻的零售标准",
         "bsh.title": "Siemens 京东 MALL 大体量零售空间",
         "bsh.meta1": "大规模门店",
         "bsh.meta2": "商业价值",
