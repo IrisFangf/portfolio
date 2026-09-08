@@ -195,6 +195,7 @@
     .hero-media > img {
       transform: scale(1.035);
       filter: saturate(0.82) contrast(1.08);
+      object-position: center 42%;
     }
 
     .hero-card {
@@ -499,36 +500,103 @@
       text-transform: uppercase;
     }
 
-    .visual-band {
-      display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      gap: 18px;
-      margin: 56px 0 22px;
-      align-items: stretch;
+    .project-cover {
+      position: relative;
+      margin: 58px 0 26px;
+      padding: clamp(18px, 2.4vw, 34px);
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.56), rgba(233, 233, 226, 0.28)),
+        var(--paper);
     }
 
-    .visual-band-main,
-    .visual-band-side {
+    .project-cover::before {
+      content: "";
+      position: absolute;
+      left: clamp(18px, 2.4vw, 34px);
+      right: clamp(18px, 2.4vw, 34px);
+      top: clamp(18px, 2.4vw, 34px);
+      height: 1px;
+      background: var(--ink);
+      opacity: 0.18;
+    }
+
+    .project-cover-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.28fr) minmax(300px, 0.72fr);
+      gap: clamp(16px, 2vw, 28px);
+      align-items: end;
+      padding-top: clamp(20px, 2.4vw, 34px);
+    }
+
+    .project-cover-main,
+    .project-cover-side figure {
       background: var(--soft);
       overflow: hidden;
     }
 
-    .visual-band-main {
-      min-height: min(72vh, 720px);
+    .project-cover-main {
+      position: relative;
+      aspect-ratio: 16 / 9;
     }
 
-    .visual-band-side {
-      min-height: min(72vh, 720px);
+    .project-cover-main::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 54%, rgba(0, 0, 0, 0.34));
+      pointer-events: none;
+    }
+
+    .project-cover-main img {
+      object-position: center 46%;
+    }
+
+    .project-cover-side {
       display: grid;
-      grid-template-rows: 1fr 1fr;
-      gap: 18px;
-      background: transparent;
+      grid-template-columns: 1fr;
+      gap: clamp(16px, 2vw, 28px);
     }
 
-    .visual-band-side figure {
+    .project-cover-side figure {
       margin: 0;
-      overflow: hidden;
-      background: var(--soft);
+      aspect-ratio: 4 / 3;
+    }
+
+    .project-cover-side figure:first-child {
+      aspect-ratio: 16 / 9;
+    }
+
+    .project-cover-side figure:first-child img {
+      object-fit: contain;
+      background: #e6e5dd;
+    }
+
+    .project-cover-side figure:last-child img {
+      object-position: center 45%;
+    }
+
+    .project-cover-label {
+      position: absolute;
+      left: clamp(30px, 4vw, 68px);
+      bottom: clamp(30px, 4vw, 68px);
+      z-index: 1;
+      max-width: 520px;
+      color: var(--paper);
+      font-size: clamp(38px, 5vw, 82px);
+      line-height: 0.86;
+      text-transform: uppercase;
+    }
+
+    .project-cover-caption {
+      display: grid;
+      grid-template-columns: minmax(180px, 280px) 1fr;
+      gap: clamp(28px, 5vw, 80px);
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+      text-transform: uppercase;
     }
 
     .section-number {
@@ -665,6 +733,35 @@
       overflow: hidden;
     }
 
+    .slide img {
+      object-position: center center;
+    }
+
+    .slide img[src*="bsh-store-wide-01"],
+    .slide img[src*="bsh-store-wide-04"] {
+      object-position: center 45%;
+    }
+
+    .slide img[src*="bsh-store-wide-02"],
+    .slide img[src*="bsh-store-wide-03"] {
+      object-position: center 40%;
+    }
+
+    .slide img[src*="bsh-care-01"] {
+      object-fit: contain;
+      background: #e6e5dd;
+    }
+
+    .slide img[src*="bsh-care-02"],
+    .slide img[src*="bsh-care-03"],
+    .slide img[src*="bsh-care-04"] {
+      object-position: center 46%;
+    }
+
+    .slide img[src*="bsh-kitchen"] {
+      object-position: center 45%;
+    }
+
     .slide.wide {
       aspect-ratio: 16 / 8.6;
     }
@@ -745,7 +842,8 @@
       .project-line,
       .compare,
       .label-row,
-      .visual-band,
+      .project-cover-grid,
+      .project-cover-caption,
       .nest-showcase {
         grid-template-columns: 1fr;
       }
@@ -764,22 +862,12 @@
         min-height: 380px;
       }
 
-      .visual-band-main,
-      .visual-band-side {
-        min-height: auto;
+      .project-cover-grid {
+        align-items: stretch;
       }
 
-      .visual-band-main {
-        aspect-ratio: 4 / 3;
-      }
-
-      .visual-band-side {
+      .project-cover-side {
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto;
-      }
-
-      .visual-band-side figure {
-        aspect-ratio: 4 / 3;
       }
 
       .rail {
@@ -836,6 +924,20 @@
 
       .concept-chip.two {
         right: 4%;
+      }
+
+      .project-cover {
+        padding: 12px;
+      }
+
+      .project-cover-side {
+        grid-template-columns: 1fr;
+      }
+
+      .project-cover-label {
+        left: 24px;
+        bottom: 24px;
+        font-size: 42px;
       }
 
       .hero-mark {
@@ -932,13 +1034,20 @@
         <span data-i18n="bsh.scope4">Final visual presentation after landing</span>
       </div>
 
-      <div class="visual-band">
-        <div class="visual-band-main">
-          <img src="assets/bsh-store-wide-01.jpg" alt="Siemens JD Mall retail facade">
+      <div class="project-cover">
+        <div class="project-cover-grid">
+          <div class="project-cover-main">
+            <img src="assets/bsh-store-wide-04.jpg" alt="Siemens JD Mall retail facade">
+            <div class="project-cover-label">Flagship<br>Retail</div>
+          </div>
+          <div class="project-cover-side">
+            <figure><img src="assets/bsh-care-01.jpg" alt="Siemens wash care center"></figure>
+            <figure><img src="assets/bsh-kitchen-01.jpg" alt="Siemens kitchen and living scene"></figure>
+          </div>
         </div>
-        <div class="visual-band-side">
-          <figure><img src="assets/bsh-care-01.jpg" alt="Siemens wash care center"></figure>
-          <figure><img src="assets/bsh-kitchen-01.jpg" alt="Siemens kitchen and living scene"></figure>
+        <div class="project-cover-caption">
+          <span data-i18n="bsh.coverMeta">Project opening</span>
+          <span data-i18n="bsh.coverText">One large store image anchors the scale, with selected details showing category zones and commercial atmosphere.</span>
         </div>
       </div>
 
@@ -1143,6 +1252,8 @@
         "bsh.scope2": "Brand image and commercial display",
         "bsh.scope3": "Design proposal and visual review",
         "bsh.scope4": "Final visual presentation after landing",
+        "bsh.coverMeta": "Project opening",
+        "bsh.coverText": "One large store image anchors the scale, with selected details showing category zones and commercial atmosphere.",
         "bsh.videoLabel": "JD MALL kitchen hall · on-site walkthrough",
         "bsh.finalLabel": "Final store presentation",
         "bsh.finalText": "Large Siemens retail environment showing brand visibility, display rhythm, and commercial atmosphere.",
@@ -1186,6 +1297,8 @@
         "bsh.scope2": "品牌形象与商业陈列",
         "bsh.scope3": "设计方案与视觉复盘",
         "bsh.scope4": "落地后的最终视觉呈现",
+        "bsh.coverMeta": "项目开场",
+        "bsh.coverText": "用一张门店主视觉建立规模感，并以精选局部呈现品类分区与商业氛围。",
         "bsh.videoLabel": "京东 MALL 厨电厅动态效果实拍展示",
         "bsh.finalLabel": "落地后的门店效果",
         "bsh.finalText": "大体量 Siemens 零售空间，体现品牌识别、陈列节奏与商业氛围。",
