@@ -176,7 +176,7 @@
 
     .hero-abilities {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 1px;
       margin-top: clamp(30px, 4vw, 56px);
       border: 1px solid var(--line);
@@ -185,25 +185,25 @@
 
     .ability-row {
       display: grid;
-      grid-template-columns: 72px 1fr;
-      gap: 20px;
-      min-height: 84px;
-      padding: 18px;
+      gap: 28px;
+      min-height: 132px;
+      padding: 18px 16px;
       background: rgba(246, 246, 242, 0.92);
     }
 
     .ability-row strong {
-      font-size: clamp(28px, 3.6vw, 52px);
+      font-size: clamp(28px, 3.2vw, 48px);
       line-height: 0.88;
       font-weight: 400;
-      color: var(--cyan);
+      color: var(--ink);
     }
 
     .ability-row span {
-      align-self: center;
-      color: var(--ink);
-      font-size: clamp(17px, 1.6vw, 24px);
-      line-height: 1.12;
+      align-self: end;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.2;
+      text-transform: uppercase;
     }
 
     .hero-media,
@@ -273,7 +273,7 @@
       top: 30%;
       width: 24%;
       height: 38%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(214, 214, 204, 0.72));
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(214, 214, 204, 0.78));
     }
 
     .display-block.two {
@@ -281,7 +281,7 @@
       top: 22%;
       width: 18%;
       height: 48%;
-      background: linear-gradient(180deg, rgba(0, 168, 183, 0.26), rgba(246, 246, 242, 0.76));
+      background: linear-gradient(180deg, rgba(0, 168, 183, 0.18), rgba(246, 246, 242, 0.78));
     }
 
     .display-block.three {
@@ -289,7 +289,7 @@
       top: 34%;
       width: 20%;
       height: 32%;
-      background: linear-gradient(180deg, rgba(184, 164, 124, 0.34), rgba(246, 246, 242, 0.72));
+      background: linear-gradient(180deg, rgba(184, 164, 124, 0.22), rgba(246, 246, 242, 0.76));
     }
 
     .display-block::before {
@@ -387,7 +387,7 @@
 
     .system-card small {
       display: block;
-      margin-bottom: 36px;
+      margin-bottom: 48px;
       color: var(--muted);
       font-size: 10px;
       text-transform: uppercase;
@@ -397,6 +397,17 @@
       display: block;
       font-size: clamp(28px, 3.6vw, 48px);
       line-height: 0.88;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    .quiet-word {
+      position: absolute;
+      left: 8%;
+      bottom: 8%;
+      color: rgba(21, 21, 21, 0.08);
+      font-size: clamp(96px, 15vw, 190px);
+      line-height: 0.78;
       font-weight: 400;
       text-transform: uppercase;
     }
@@ -691,6 +702,29 @@
       color: var(--muted);
       font-size: clamp(22px, 2.6vw, 38px);
       line-height: 1.12;
+    }
+
+    .project-stat {
+      display: grid;
+      grid-template-columns: minmax(180px, 280px) 1fr;
+      gap: clamp(28px, 5vw, 80px);
+      margin: -18px 0 42px;
+      align-items: end;
+    }
+
+    .project-stat strong {
+      display: block;
+      font-size: clamp(76px, 10vw, 160px);
+      line-height: 0.82;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    .project-stat span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+      text-transform: uppercase;
     }
 
     .scope {
@@ -1053,6 +1087,7 @@
       .hero-foot,
       .section-head,
       .project-line,
+      .project-stat,
       .compare,
       .label-row,
       .project-cover-grid,
@@ -1067,6 +1102,16 @@
 
       .scope {
         grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-abilities {
+        grid-template-columns: 1fr;
+      }
+
+      .ability-row {
+        min-height: 82px;
+        grid-template-columns: 72px 1fr;
+        gap: 20px;
       }
 
       .hero-media,
@@ -1221,10 +1266,10 @@
               <div class="display-block two"></div>
               <div class="display-block three"></div>
               <div class="system-card">
-                <small data-i18n="hero.systemSmall">Guideline / Landing / Rollout</small>
+                <small>01 / 02 / 03</small>
                 <strong data-i18n="hero.systemTitle">VM System</strong>
               </div>
-              <div class="concept-tag" data-i18n="hero.concept">Concept layer / spatial strategy</div>
+              <div class="quiet-word">VM</div>
             </div>
           </div>
         </div>
@@ -1246,8 +1291,17 @@
           <span data-i18n="bsh.meta1">Large-scale store</span>
           <span data-i18n="bsh.meta2">Commercial value</span>
           <span data-i18n="bsh.meta3">Design to final presentation</span>
+          <span data-i18n="bsh.meta4">78 stores landed in Shanghai</span>
         </div>
         <p class="project-desc" data-i18n="bsh.desc">The BSH project translates the Siemens brand into a high-value retail environment, connecting store scale, design proposal, commercial display, and final presentation.</p>
+      </div>
+
+      <div class="project-stat">
+        <span data-i18n="bsh.statLabel">Shanghai rollout</span>
+        <div>
+          <strong>78</strong>
+          <span data-i18n="bsh.statText">Stores landed</span>
+        </div>
       </div>
 
       <div class="scope" id="scope">
@@ -1364,11 +1418,20 @@
 
       <div class="project-line">
         <div class="project-meta">
-          <span>Guideline</span>
+          <span data-i18n="nest.meta1">Guideline</span>
           <span data-i18n="nest.meta2">Design proposal</span>
           <span data-i18n="nest.meta3">Landing execution</span>
+          <span data-i18n="nest.meta4">28 stores landed</span>
         </div>
         <p class="project-desc" data-i18n="nest.desc">NEST represents my full-chain work scope: from VM guideline and store design proposal to implementation and final store presentation.</p>
+      </div>
+
+      <div class="project-stat">
+        <span data-i18n="nest.statLabel">Store rollout</span>
+        <div>
+          <strong>28</strong>
+          <span data-i18n="nest.statText">Stores landed</span>
+        </div>
       </div>
 
       <div class="scope">
@@ -1458,24 +1521,27 @@
       en: {
         "nav.scope": "Scope",
         "hero.eyebrow": "Visual Merchandising / Retail Space",
-        "hero.title": "VM System to Store Landing",
-        "hero.intro": "A portfolio structured around the ability to build VM guidelines, translate them into retail spaces, and support scalable store replication.",
-        "hero.ability1": "VM guideline system output",
-        "hero.ability2": "Retail space design to landing",
-        "hero.ability3": "Replicable store standards and rollout",
+        "hero.title": "VM / Retail Space",
+        "hero.intro": "Guideline, landing, replication.",
+        "hero.ability1": "Guideline",
+        "hero.ability2": "Landing",
+        "hero.ability3": "Replication",
         "hero.bshMeta": "Recent / Large-scale retail",
         "hero.nestMeta": "Early / Full-chain VM",
         "hero.concept": "Concept layer / spatial strategy",
         "hero.systemSmall": "Guideline / Landing / Rollout",
         "hero.systemTitle": "VM System",
         "hero.mark": "VM\nSpace",
-        "hero.left": "From visual strategy to final store state",
-        "hero.right": "Guideline output, space design, landing control, and replicable retail standards",
+        "hero.left": "VM guideline / retail space / rollout",
+        "hero.right": "Selected works: BSH and NEST",
         "bsh.title": "Siemens JD Mall Flagship Retail Space",
         "bsh.meta1": "Large-scale store",
         "bsh.meta2": "Commercial value",
         "bsh.meta3": "Design to final presentation",
-        "bsh.desc": "The BSH project translates the Siemens brand into a high-value retail environment, connecting store scale, design proposal, commercial display, and final presentation.",
+        "bsh.meta4": "78 stores landed in Shanghai",
+        "bsh.desc": "The BSH project translates the Siemens brand into a high-value retail environment, with 78 stores landed in Shanghai across design, display, and final presentation.",
+        "bsh.statLabel": "Shanghai rollout",
+        "bsh.statText": "Stores landed",
         "bsh.scope1": "Store scale and customer circulation",
         "bsh.scope2": "Brand image and commercial display",
         "bsh.scope3": "Design proposal and visual review",
@@ -1490,9 +1556,13 @@
         "bsh.kitchenTitle": "Kitchen and living scene",
         "bsh.proposalTitle": "Design proposal",
         "nest.title": "Full-chain VM and Store Design Work",
+        "nest.meta1": "Guideline",
         "nest.meta2": "Design proposal",
         "nest.meta3": "Landing execution",
-        "nest.desc": "NEST covers the full chain from VM guideline and store design proposal to implementation and final store presentation.",
+        "nest.meta4": "28 stores landed",
+        "nest.desc": "NEST covers the full chain from VM guideline and store design proposal to implementation, final store presentation, and 28 landed stores.",
+        "nest.statLabel": "Store rollout",
+        "nest.statText": "Stores landed",
         "nest.scope1": "VM guideline system",
         "nest.scope2": "Store design proposal",
         "nest.scope3": "Display standard and visual logic",
@@ -1508,24 +1578,27 @@
       zh: {
         "nav.scope": "职责",
         "hero.eyebrow": "Visual Merchandising / Retail Space",
-        "hero.title": "从 VM 系统到门店落地",
-        "hero.intro": "首页先呈现能力结构：输出 VM guideline，将其转化为空间与陈列方案，并支持后续门店复刻与标准化延展。",
-        "hero.ability1": "VM guideline 系统输出",
-        "hero.ability2": "零售空间设计到落地",
-        "hero.ability3": "门店标准复刻与延展",
+        "hero.title": "VM / 零售空间",
+        "hero.intro": "Guideline，落地，复刻。",
+        "hero.ability1": "Guideline",
+        "hero.ability2": "落地",
+        "hero.ability3": "复刻",
         "hero.bshMeta": "近期 / 大体量零售空间",
         "hero.nestMeta": "早期 / 全链路 VM 工作",
         "hero.concept": "概念层 / 空间策略",
         "hero.systemSmall": "Guideline / Landing / Rollout",
         "hero.systemTitle": "VM System",
         "hero.mark": "VM\nSpace",
-        "hero.left": "从视觉策略到最终店态",
-        "hero.right": "Guideline 输出、空间设计、落地把控、可复刻的零售标准",
+        "hero.left": "VM guideline / 零售空间 / 复刻延展",
+        "hero.right": "精选项目：BSH 与 NEST",
         "bsh.title": "Siemens 京东 MALL 大体量零售空间",
         "bsh.meta1": "大规模门店",
         "bsh.meta2": "商业价值",
         "bsh.meta3": "从设计到落地呈现",
-        "bsh.desc": "BSH 项目重点体现门店规模与商业价值，将 Siemens 品牌转化为高价值零售空间，贯穿设计方案、商业陈列与最终落地效果呈现。",
+        "bsh.meta4": "上海落地 78 家",
+        "bsh.desc": "BSH 项目重点体现门店规模与商业价值，上海落地 78 家，贯穿设计方案、商业陈列与最终落地效果呈现。",
+        "bsh.statLabel": "上海门店落地",
+        "bsh.statText": "家门店落地",
         "bsh.scope1": "门店规模与顾客动线",
         "bsh.scope2": "品牌形象与商业陈列",
         "bsh.scope3": "设计方案与视觉复盘",
@@ -1540,9 +1613,13 @@
         "bsh.kitchenTitle": "厨电与生活场景",
         "bsh.proposalTitle": "设计方案",
         "nest.title": "NEST 全链路 VM 与空间设计工作",
+        "nest.meta1": "Guideline",
         "nest.meta2": "设计方案",
         "nest.meta3": "落地执行",
-        "nest.desc": "NEST 覆盖全链路工作范畴：从 VM guideline、空间设计方案，到后续落地执行与最终店态呈现。",
+        "nest.meta4": "落地 28 家",
+        "nest.desc": "NEST 覆盖全链路工作范畴：从 VM guideline、空间设计方案，到后续落地执行、最终店态呈现与 28 家门店落地。",
+        "nest.statLabel": "门店落地",
+        "nest.statText": "家门店落地",
         "nest.scope1": "VM guideline 系统",
         "nest.scope2": "空间设计方案",
         "nest.scope3": "陈列标准与视觉逻辑",
