@@ -215,6 +215,122 @@
       filter: saturate(0.92);
     }
 
+    .concept-layer {
+      position: absolute;
+      inset: clamp(22px, 3.6vw, 48px) clamp(20px, 3vw, 42px) auto auto;
+      z-index: 2;
+      width: min(62%, 520px);
+      aspect-ratio: 1.2 / 1;
+      color: rgba(246, 246, 242, 0.9);
+      pointer-events: none;
+    }
+
+    .concept-map {
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(246, 246, 242, 0.38);
+      background:
+        linear-gradient(rgba(246, 246, 242, 0.16) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(246, 246, 242, 0.16) 1px, transparent 1px),
+        rgba(23, 24, 22, 0.16);
+      background-size: 32px 32px;
+      backdrop-filter: blur(2px);
+    }
+
+    .concept-map::before,
+    .concept-map::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(0, 168, 183, 0.74);
+      transform: rotate(-12deg);
+    }
+
+    .concept-map::before {
+      left: 13%;
+      top: 18%;
+      width: 46%;
+      height: 38%;
+    }
+
+    .concept-map::after {
+      right: 10%;
+      bottom: 13%;
+      width: 34%;
+      height: 28%;
+      border-color: rgba(184, 164, 124, 0.78);
+      transform: rotate(7deg);
+    }
+
+    .concept-path {
+      position: absolute;
+      left: 10%;
+      top: 15%;
+      width: 78%;
+      height: 60%;
+      border: 1px solid rgba(246, 246, 242, 0.7);
+      border-left-color: transparent;
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      transform: rotate(18deg);
+    }
+
+    .concept-path::before,
+    .concept-path::after {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: var(--cyan);
+    }
+
+    .concept-path::before {
+      right: 12%;
+      top: 4%;
+    }
+
+    .concept-path::after {
+      left: 17%;
+      bottom: 13%;
+      background: var(--warm);
+    }
+
+    .concept-chip {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(246, 246, 242, 0.42);
+      background: rgba(246, 246, 242, 0.08);
+      color: rgba(246, 246, 242, 0.88);
+      font-size: 10px;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .concept-chip.one {
+      left: 7%;
+      bottom: 10%;
+      width: 74px;
+      height: 74px;
+    }
+
+    .concept-chip.two {
+      right: -5%;
+      top: 33%;
+      width: 92px;
+      height: 40px;
+      background: rgba(0, 168, 183, 0.26);
+    }
+
+    .concept-label {
+      position: absolute;
+      left: 0;
+      bottom: -26px;
+      color: rgba(246, 246, 242, 0.8);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
     .hero-mark {
       position: absolute;
       z-index: 1;
@@ -713,6 +829,15 @@
         width: 46%;
       }
 
+      .concept-layer {
+        width: 72%;
+        opacity: 0.8;
+      }
+
+      .concept-chip.two {
+        right: 4%;
+      }
+
       .hero-mark {
         font-size: 40px;
       }
@@ -763,6 +888,13 @@
           </div>
           <div class="hero-media">
             <img src="assets/bsh-store-wide-04.jpg" alt="Siemens retail space">
+            <div class="concept-layer" aria-hidden="true">
+              <div class="concept-map"></div>
+              <div class="concept-path"></div>
+              <div class="concept-chip one">Material</div>
+              <div class="concept-chip two">Flow 01</div>
+              <div class="concept-label" data-i18n="hero.concept">Concept layer / spatial strategy</div>
+            </div>
             <div class="hero-card">
               <img src="assets/nest-guideline-01.jpg" alt="NEST VM guideline">
             </div>
@@ -998,6 +1130,7 @@
         "hero.intro": "Selected commercial retail projects shown through video, large-format imagery, design proposals, and final execution.",
         "hero.bshMeta": "Recent / Large-scale retail",
         "hero.nestMeta": "Early / Full-chain VM",
+        "hero.concept": "Concept layer / spatial strategy",
         "hero.mark": "VM\nSpace",
         "hero.left": "Focus: branded retail environments",
         "hero.right": "Scope: guideline, design proposal, site execution, final presentation",
@@ -1040,6 +1173,7 @@
         "hero.intro": "用视频、大图、设计方案与落地照片展示商业零售项目。",
         "hero.bshMeta": "近期 / 大体量零售空间",
         "hero.nestMeta": "早期 / 全链路 VM 工作",
+        "hero.concept": "概念层 / 空间策略",
         "hero.mark": "VM\nSpace",
         "hero.left": "方向：品牌零售终端空间",
         "hero.right": "范围：guideline、设计方案、现场落地、最终效果呈现",
