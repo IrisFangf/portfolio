@@ -129,8 +129,8 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(320px, 0.88fr) minmax(540px, 1.12fr);
-      gap: clamp(30px, 5vw, 76px);
+      grid-template-columns: minmax(320px, 0.78fr) minmax(540px, 1.22fr);
+      gap: clamp(38px, 6vw, 96px);
       align-items: stretch;
     }
 
@@ -160,8 +160,8 @@
 
     h1 {
       margin: 0;
-      font-size: clamp(62px, 9.6vw, 154px);
-      line-height: 0.82;
+      font-size: clamp(62px, 9vw, 142px);
+      line-height: 0.86;
       font-weight: 400;
       text-transform: uppercase;
     }
@@ -177,29 +177,35 @@
     .hero-abilities {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
+      gap: 0;
       margin-top: clamp(30px, 4vw, 56px);
-      border: 1px solid var(--line);
-      background: var(--line);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: transparent;
     }
 
     .ability-row {
       display: grid;
-      gap: 28px;
-      min-height: 132px;
-      padding: 18px 16px;
-      background: rgba(246, 246, 242, 0.92);
+      grid-template-columns: 34px 1fr;
+      gap: 14px;
+      min-height: 68px;
+      padding: 16px 16px 16px 0;
+      background: transparent;
+      border-right: 1px solid var(--line);
     }
 
+    .ability-row:last-child { border-right: 0; }
+
     .ability-row strong {
-      font-size: clamp(28px, 3.2vw, 48px);
-      line-height: 0.88;
-      font-weight: 400;
-      color: var(--ink);
+      align-self: center;
+      font-size: 11px;
+      line-height: 1;
+      font-weight: 700;
+      color: var(--cyan);
     }
 
     .ability-row span {
-      align-self: end;
+      align-self: center;
       color: var(--muted);
       font-size: 11px;
       line-height: 1.2;
@@ -215,10 +221,10 @@
 
     .hero-media {
       background:
-        linear-gradient(rgba(21, 21, 21, 0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(21, 21, 21, 0.08) 1px, transparent 1px),
-        #e8e8e0;
-      background-size: 42px 42px;
+        linear-gradient(rgba(21, 21, 21, 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(21, 21, 21, 0.055) 1px, transparent 1px),
+        #ecebe4;
+      background-size: 52px 52px;
       border: 1px solid var(--line);
     }
 
@@ -234,12 +240,12 @@
 
     .display-rail {
       position: absolute;
-      left: 10%;
-      right: 8%;
-      bottom: 18%;
+      left: 16%;
+      right: 12%;
+      bottom: 20%;
       height: 2px;
-      background: rgba(21, 21, 21, 0.72);
-      transform: perspective(720px) rotateX(58deg) rotateZ(-7deg);
+      background: rgba(21, 21, 21, 0.46);
+      transform: perspective(720px) rotateX(58deg) rotateZ(-6deg);
       transform-origin: left center;
     }
 
@@ -263,24 +269,24 @@
 
     .display-block {
       position: absolute;
-      border: 1px solid rgba(21, 21, 21, 0.32);
+      border: 1px solid rgba(21, 21, 21, 0.22);
       background: rgba(246, 246, 242, 0.62);
-      box-shadow: 22px 32px 70px rgba(21, 21, 21, 0.12);
+      box-shadow: 22px 32px 70px rgba(21, 21, 21, 0.08);
     }
 
     .display-block.one {
-      left: 12%;
-      top: 30%;
-      width: 24%;
-      height: 38%;
+      left: 18%;
+      top: 34%;
+      width: 22%;
+      height: 34%;
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(214, 214, 204, 0.78));
     }
 
     .display-block.two {
-      left: 42%;
-      top: 22%;
-      width: 18%;
-      height: 48%;
+      left: 46%;
+      top: 24%;
+      width: 17%;
+      height: 46%;
       background: linear-gradient(180deg, rgba(0, 168, 183, 0.18), rgba(246, 246, 242, 0.78));
     }
 
@@ -301,15 +307,15 @@
 
     .material-board {
       position: absolute;
-      left: 8%;
-      top: 8%;
-      width: min(40%, 340px);
+      left: 10%;
+      top: 10%;
+      width: min(31%, 260px);
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 8px;
       padding: 10px;
-      border: 1px solid rgba(21, 21, 21, 0.28);
-      background: rgba(246, 246, 242, 0.7);
+      border: 1px solid rgba(21, 21, 21, 0.18);
+      background: rgba(246, 246, 242, 0.62);
     }
 
     .material-board span {
@@ -344,10 +350,10 @@
     .flow-line {
       position: absolute;
       left: 18%;
-      top: 16%;
-      width: 66%;
-      height: 58%;
-      border: 1px solid rgba(0, 168, 183, 0.72);
+      top: 18%;
+      width: 62%;
+      height: 54%;
+      border: 1px solid rgba(0, 168, 183, 0.52);
       border-left-color: transparent;
       border-bottom-color: transparent;
       border-radius: 50%;
@@ -378,11 +384,11 @@
       position: absolute;
       right: clamp(18px, 3vw, 42px);
       bottom: clamp(18px, 3vw, 42px);
-      width: min(44%, 360px);
+      width: min(38%, 310px);
       padding: clamp(18px, 2.2vw, 28px);
-      border: 1px solid rgba(21, 21, 21, 0.38);
-      background: rgba(246, 246, 242, 0.86);
-      box-shadow: 0 26px 70px rgba(21, 21, 21, 0.14);
+      border: 1px solid rgba(21, 21, 21, 0.22);
+      background: rgba(246, 246, 242, 0.76);
+      box-shadow: 0 26px 70px rgba(21, 21, 21, 0.1);
     }
 
     .system-card small {
@@ -622,7 +628,7 @@
     .section {
       max-width: var(--max);
       margin: 0 auto;
-      padding: 92px clamp(20px, 4vw, 56px);
+      padding: clamp(76px, 9vw, 132px) clamp(20px, 4vw, 56px);
     }
 
     .section.bsh-section,
@@ -660,7 +666,7 @@
       display: grid;
       grid-template-columns: minmax(180px, 280px) 1fr;
       gap: clamp(28px, 5vw, 80px);
-      margin-bottom: 42px;
+      margin-bottom: 34px;
       padding-top: 22px;
       border-top: 1px solid var(--line);
     }
@@ -683,7 +689,7 @@
       display: grid;
       grid-template-columns: minmax(180px, 280px) 1fr;
       gap: clamp(28px, 5vw, 80px);
-      margin-bottom: 46px;
+      margin-bottom: 34px;
     }
 
     .project-meta {
@@ -708,7 +714,7 @@
       display: grid;
       grid-template-columns: minmax(180px, 280px) 1fr;
       gap: clamp(28px, 5vw, 80px);
-      margin: -18px 0 42px;
+      margin: -10px 0 40px;
       align-items: end;
     }
 
@@ -730,26 +736,31 @@
     .scope {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      margin: 0 0 22px;
-      border: 1px solid var(--line);
-      background: var(--line);
+      gap: 0;
+      margin: 0 0 38px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: transparent;
     }
 
     .scope span {
-      min-height: 86px;
+      min-height: 58px;
       display: flex;
       align-items: center;
-      padding: 18px;
-      background: var(--paper);
-      font-size: 13px;
+      padding: 14px 18px 14px 0;
+      background: transparent;
+      border-right: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
       line-height: 1.35;
       text-transform: uppercase;
     }
 
+    .scope span:last-child { border-right: 0; }
+
     .project-cover {
       position: relative;
-      margin: 58px 0 26px;
+      margin: 48px 0 26px;
       padding: clamp(18px, 2.4vw, 34px);
       border: 1px solid var(--line);
       background:
@@ -924,7 +935,7 @@
     }
 
     .gallery-block {
-      margin-top: 56px;
+      margin-top: clamp(46px, 6vw, 78px);
     }
 
     .gallery-head {
@@ -1257,14 +1268,11 @@
                 <span></span>
                 <span></span>
                 <span></span>
-                <span></span>
-                <span></span>
               </div>
               <div class="flow-line"></div>
               <div class="display-rail"></div>
               <div class="display-block one"></div>
               <div class="display-block two"></div>
-              <div class="display-block three"></div>
               <div class="system-card">
                 <small>01 / 02 / 03</small>
                 <strong data-i18n="hero.systemTitle">VM System</strong>
@@ -1291,7 +1299,6 @@
           <span data-i18n="bsh.meta1">Large-scale store</span>
           <span data-i18n="bsh.meta2">Commercial value</span>
           <span data-i18n="bsh.meta3">Design to final presentation</span>
-          <span data-i18n="bsh.meta4">78 stores landed in Shanghai</span>
         </div>
         <p class="project-desc" data-i18n="bsh.desc">The BSH project translates the Siemens brand into a high-value retail environment, connecting store scale, design proposal, commercial display, and final presentation.</p>
       </div>
@@ -1421,7 +1428,6 @@
           <span data-i18n="nest.meta1">Guideline</span>
           <span data-i18n="nest.meta2">Design proposal</span>
           <span data-i18n="nest.meta3">Landing execution</span>
-          <span data-i18n="nest.meta4">28 stores landed</span>
         </div>
         <p class="project-desc" data-i18n="nest.desc">NEST represents my full-chain work scope: from VM guideline and store design proposal to implementation and final store presentation.</p>
       </div>
@@ -1538,8 +1544,7 @@
         "bsh.meta1": "Large-scale store",
         "bsh.meta2": "Commercial value",
         "bsh.meta3": "Design to final presentation",
-        "bsh.meta4": "78 stores landed in Shanghai",
-        "bsh.desc": "The BSH project translates the Siemens brand into a high-value retail environment, with 78 stores landed in Shanghai across design, display, and final presentation.",
+        "bsh.desc": "Large-scale Siemens retail space from design proposal to commercial display and final landing.",
         "bsh.statLabel": "Shanghai rollout",
         "bsh.statText": "Stores landed",
         "bsh.scope1": "Store scale and customer circulation",
@@ -1559,8 +1564,7 @@
         "nest.meta1": "Guideline",
         "nest.meta2": "Design proposal",
         "nest.meta3": "Landing execution",
-        "nest.meta4": "28 stores landed",
-        "nest.desc": "NEST covers the full chain from VM guideline and store design proposal to implementation, final store presentation, and 28 landed stores.",
+        "nest.desc": "Full-chain VM work from guideline system to space proposal, implementation, and final store state.",
         "nest.statLabel": "Store rollout",
         "nest.statText": "Stores landed",
         "nest.scope1": "VM guideline system",
@@ -1595,8 +1599,7 @@
         "bsh.meta1": "大规模门店",
         "bsh.meta2": "商业价值",
         "bsh.meta3": "从设计到落地呈现",
-        "bsh.meta4": "上海落地 78 家",
-        "bsh.desc": "BSH 项目重点体现门店规模与商业价值，上海落地 78 家，贯穿设计方案、商业陈列与最终落地效果呈现。",
+        "bsh.desc": "大体量 Siemens 零售空间，贯穿设计方案、商业陈列与最终落地呈现。",
         "bsh.statLabel": "上海门店落地",
         "bsh.statText": "家门店落地",
         "bsh.scope1": "门店规模与顾客动线",
@@ -1616,8 +1619,7 @@
         "nest.meta1": "Guideline",
         "nest.meta2": "设计方案",
         "nest.meta3": "落地执行",
-        "nest.meta4": "落地 28 家",
-        "nest.desc": "NEST 覆盖全链路工作范畴：从 VM guideline、空间设计方案，到后续落地执行、最终店态呈现与 28 家门店落地。",
+        "nest.desc": "全链路 VM 工作，从 guideline 系统、空间方案到落地执行与最终店态。",
         "nest.statLabel": "门店落地",
         "nest.statText": "家门店落地",
         "nest.scope1": "VM guideline 系统",
