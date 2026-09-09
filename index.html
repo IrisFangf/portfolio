@@ -233,9 +233,43 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 70% 28%, rgba(0, 168, 183, 0.14), transparent 30%),
-        linear-gradient(135deg, rgba(246, 246, 242, 0.2), rgba(23, 24, 22, 0.08));
+        linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.42)),
+        linear-gradient(90deg, rgba(0, 168, 183, 0.18), transparent 32%);
       pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      min-height: clamp(560px, 76vh, 840px);
+      object-fit: cover;
+      object-position: center 46%;
+      filter: saturate(0.88) contrast(1.05);
+    }
+
+    .hero-photo-caption {
+      position: absolute;
+      left: clamp(18px, 2.6vw, 36px);
+      right: clamp(18px, 2.6vw, 36px);
+      bottom: clamp(18px, 2.6vw, 36px);
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      color: rgba(246, 246, 242, 0.9);
+      font-size: 11px;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    .hero-photo-caption strong {
+      display: block;
+      max-width: 360px;
+      font-size: clamp(28px, 4vw, 56px);
+      line-height: 0.92;
+      font-weight: 400;
     }
 
     .display-rail {
@@ -631,6 +665,7 @@
       padding: clamp(76px, 9vw, 132px) clamp(20px, 4vw, 56px);
     }
 
+    .section.yishan-section,
     .section.bsh-section,
     .section.nest-section {
       position: relative;
@@ -641,6 +676,7 @@
       z-index: 1;
     }
 
+    .section.yishan-section::before,
     .section.bsh-section::before,
     .section.nest-section::before {
       content: "";
@@ -660,6 +696,11 @@
     .section.nest-section::before {
       border-left-color: var(--warm);
       transform: rotate(-7deg);
+    }
+
+    .section.yishan-section::before {
+      border-left-color: var(--ink);
+      transform: rotate(4deg);
     }
 
     .section-head {
@@ -731,6 +772,15 @@
       font-size: 12px;
       line-height: 1.35;
       text-transform: uppercase;
+    }
+
+    .project-stat.dual {
+      grid-template-columns: minmax(180px, 280px) repeat(2, minmax(0, 1fr));
+    }
+
+    .project-stat.dual > div {
+      border-left: 1px solid var(--line);
+      padding-left: clamp(20px, 3vw, 38px);
     }
 
     .scope {
@@ -808,6 +858,11 @@
 
     .project-cover-main img {
       object-position: center 46%;
+    }
+
+    .project-cover-main.contain img {
+      object-fit: contain;
+      background: #e6e5dd;
     }
 
     .project-cover-side {
@@ -1099,6 +1154,7 @@
       .section-head,
       .project-line,
       .project-stat,
+      .project-stat.dual,
       .compare,
       .label-row,
       .project-cover-grid,
@@ -1225,6 +1281,7 @@
     <a class="brand" href="#top">Iris Fang</a>
     <div class="header-right">
       <nav class="nav" aria-label="Primary navigation">
+        <a href="#yishan">Global 1</a>
         <a href="#bsh">BSH</a>
         <a href="#nest">NEST</a>
         <a href="#scope" data-i18n="nav.scope">Scope</a>
@@ -1262,22 +1319,10 @@
             </div>
           </div>
           <div class="hero-media">
-            <div class="concept-stage" aria-hidden="true">
-              <div class="material-board">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-              <div class="flow-line"></div>
-              <div class="display-rail"></div>
-              <div class="display-block one"></div>
-              <div class="display-block two"></div>
-              <div class="system-card">
-                <small>01 / 02 / 03</small>
-                <strong data-i18n="hero.systemTitle">VM System</strong>
-              </div>
-              <div class="quiet-word">VM</div>
+            <img class="hero-photo" src="assets/yishan/yishan-hero.jpg" alt="Siemens Global No.1 flagship store">
+            <div class="hero-photo-caption">
+              <strong data-i18n="hero.photoTitle">Siemens Global No.1 Store</strong>
+              <span data-i18n="hero.photoMeta">800 sqm flagship retail space</span>
             </div>
           </div>
         </div>
@@ -1288,9 +1333,95 @@
       </div>
     </section>
 
+    <section class="section yishan-section" id="yishan">
+      <div class="section-head">
+        <span class="kicker">01 / SIEMENS GLOBAL NO.1</span>
+        <h2 class="section-title" data-i18n="yishan.title">Siemens Global No.1 Flagship Store</h2>
+      </div>
+
+      <div class="project-line">
+        <div class="project-meta">
+          <span data-i18n="yishan.meta1">Global No.1 store</span>
+          <span data-i18n="yishan.meta2">800 sqm flagship scale</span>
+          <span data-i18n="yishan.meta3">Brand experience and VM display</span>
+        </div>
+        <p class="project-desc" data-i18n="yishan.desc">A flagship Siemens retail experience combining brand storytelling, product scenarios, hospitality touchpoints, and commercial display.</p>
+      </div>
+
+      <div class="project-stat dual">
+        <span data-i18n="yishan.statLabel">Flagship scale</span>
+        <div>
+          <strong>800</strong>
+          <span data-i18n="yishan.statText1">sqm flagship store</span>
+        </div>
+        <div>
+          <strong>No.1</strong>
+          <span data-i18n="yishan.statText2">Global concept store</span>
+        </div>
+      </div>
+
+      <div class="scope">
+        <span data-i18n="yishan.scope1">Brand narrative and entrance experience</span>
+        <span data-i18n="yishan.scope2">Scenario-based product zoning</span>
+        <span data-i18n="yishan.scope3">Hospitality and coffee-bar touchpoint</span>
+        <span data-i18n="yishan.scope4">Premium flagship visual presentation</span>
+      </div>
+
+      <div class="project-cover">
+        <div class="project-cover-grid">
+          <div class="project-cover-main contain">
+            <img src="assets/yishan/yishan-cover.jpg" alt="Siemens Global No.1 panoramic retail space">
+            <div class="project-cover-label">Global<br>No.1</div>
+          </div>
+          <div class="project-cover-side">
+            <figure><img src="assets/yishan/yishan-history-wall.jpg" alt="Siemens brand history wall"></figure>
+            <figure><img src="assets/yishan/yishan-coffee-bar.jpg" alt="Siemens coffee bar experience"></figure>
+          </div>
+        </div>
+        <div class="project-cover-caption">
+          <span data-i18n="yishan.coverMeta">Flagship opening</span>
+          <span data-i18n="yishan.coverText">The store uses large-scale spatial rhythm, service touchpoints, and brand storytelling to create a premium flagship experience.</span>
+        </div>
+      </div>
+
+      <div class="gallery-block">
+        <div class="gallery-head">
+          <span data-i18n="yishan.galleryTitle">Flagship store views</span>
+          <div class="gallery-controls">
+            <button type="button" data-gallery-prev aria-label="Previous slide">‹</button>
+            <button type="button" data-gallery-next aria-label="Next slide">›</button>
+          </div>
+        </div>
+        <div class="rail">
+          <div class="slide wide contain"><img src="assets/yishan/yishan-wide-store.jpg" alt="Siemens flagship wide retail view"></div>
+          <div class="slide wide contain"><img src="assets/yishan/yishan-cover.jpg" alt="Siemens flagship panoramic retail view"></div>
+          <div class="slide"><img src="assets/yishan/yishan-history-wall.jpg" alt="Siemens brand history wall"></div>
+          <div class="slide"><img src="assets/yishan/yishan-kitchen.jpg" alt="Siemens kitchen scenario"></div>
+          <div class="slide"><img src="assets/yishan/yishan-laundry.jpg" alt="Siemens laundry area"></div>
+        </div>
+      </div>
+
+      <div class="gallery-block">
+        <div class="gallery-head">
+          <span data-i18n="yishan.detailTitle">Experience details</span>
+          <div class="gallery-controls">
+            <button type="button" data-gallery-prev aria-label="Previous slide">‹</button>
+            <button type="button" data-gallery-next aria-label="Next slide">›</button>
+          </div>
+        </div>
+        <div class="rail">
+          <div class="slide wide contain"><img src="assets/yishan/yishan-cafe-detail.jpg" alt="Siemens cafe touchpoint"></div>
+          <div class="slide"><img src="assets/yishan/yishan-experience.jpg" alt="Siemens product experience"></div>
+          <div class="slide"><img src="assets/yishan/yishan-detail-01.jpg" alt="Siemens material detail"></div>
+          <div class="slide"><img src="assets/yishan/yishan-detail-02.jpg" alt="Siemens display detail"></div>
+          <div class="slide"><img src="assets/yishan/yishan-detail-03.jpg" alt="Siemens product interaction detail"></div>
+        </div>
+      </div>
+    </section>
+
     <section class="section bsh-section" id="bsh">
       <div class="section-head">
-        <span class="kicker">01 / BSH</span>
+        <span class="kicker">02 / BSH</span>
         <h2 class="section-title" data-i18n="bsh.title">Siemens JD Mall Flagship Retail Space</h2>
       </div>
 
@@ -1419,7 +1550,7 @@
 
     <section class="section nest-section" id="nest">
       <div class="section-head">
-        <span class="kicker">02 / NEST</span>
+        <span class="kicker">03 / NEST</span>
         <h2 class="section-title" data-i18n="nest.title">Full-chain VM and Store Design Work</h2>
       </div>
 
@@ -1537,9 +1668,27 @@
         "hero.concept": "Concept layer / spatial strategy",
         "hero.systemSmall": "Guideline / Landing / Rollout",
         "hero.systemTitle": "VM System",
+        "hero.photoTitle": "Siemens Global No.1 Store",
+        "hero.photoMeta": "800 sqm flagship retail space",
         "hero.mark": "VM\nSpace",
         "hero.left": "VM guideline / retail space / rollout",
         "hero.right": "Selected works: BSH and NEST",
+        "yishan.title": "Siemens Global No.1 Flagship Store",
+        "yishan.meta1": "Global No.1 store",
+        "yishan.meta2": "800 sqm flagship scale",
+        "yishan.meta3": "Brand experience and VM display",
+        "yishan.desc": "A flagship Siemens retail experience combining brand storytelling, product scenarios, hospitality touchpoints, and commercial display.",
+        "yishan.statLabel": "Flagship scale",
+        "yishan.statText1": "sqm flagship store",
+        "yishan.statText2": "Global concept store",
+        "yishan.scope1": "Brand narrative and entrance experience",
+        "yishan.scope2": "Scenario-based product zoning",
+        "yishan.scope3": "Hospitality and coffee-bar touchpoint",
+        "yishan.scope4": "Premium flagship visual presentation",
+        "yishan.coverMeta": "Flagship opening",
+        "yishan.coverText": "The store uses large-scale spatial rhythm, service touchpoints, and brand storytelling to create a premium flagship experience.",
+        "yishan.galleryTitle": "Flagship store views",
+        "yishan.detailTitle": "Experience details",
         "bsh.title": "Siemens JD Mall Flagship Retail Space",
         "bsh.meta1": "Large-scale store",
         "bsh.meta2": "Commercial value",
@@ -1592,9 +1741,27 @@
         "hero.concept": "概念层 / 空间策略",
         "hero.systemSmall": "Guideline / Landing / Rollout",
         "hero.systemTitle": "VM System",
+        "hero.photoTitle": "Siemens 全球 1 号店",
+        "hero.photoMeta": "800 平旗舰零售空间",
         "hero.mark": "VM\nSpace",
         "hero.left": "VM guideline / 零售空间 / 复刻延展",
         "hero.right": "精选项目：BSH 与 NEST",
+        "yishan.title": "Siemens 全球 1 号店旗舰空间",
+        "yishan.meta1": "全球 1 号店",
+        "yishan.meta2": "800 平旗舰大店",
+        "yishan.meta3": "品牌体验与 VM 陈列",
+        "yishan.desc": "Siemens 旗舰零售体验，融合品牌叙事、产品场景、服务触点与商业陈列。",
+        "yishan.statLabel": "旗舰规模",
+        "yishan.statText1": "平旗舰空间",
+        "yishan.statText2": "全球概念店",
+        "yishan.scope1": "品牌叙事与入口体验",
+        "yishan.scope2": "场景化产品分区",
+        "yishan.scope3": "咖啡吧与服务触点",
+        "yishan.scope4": "高端旗舰视觉呈现",
+        "yishan.coverMeta": "旗舰开场",
+        "yishan.coverText": "以大尺度空间节奏、服务触点和品牌叙事，建立高端旗舰门店体验。",
+        "yishan.galleryTitle": "旗舰门店视角",
+        "yishan.detailTitle": "体验与细节",
         "bsh.title": "Siemens 京东 MALL 大体量零售空间",
         "bsh.meta1": "大规模门店",
         "bsh.meta2": "商业价值",
